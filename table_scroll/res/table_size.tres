@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TableSize" load_steps=2 format=3 uid="uid://c7daomfa15v1r"]
+
+[ext_resource type="Script" uid="uid://bunenmw2vps5c" path="res://table_scroll/res/table_sizes.gd" id="1_xiuxd"]
+
+[resource]
+script = ExtResource("1_xiuxd")
+grid_size = Vector2(64, 16)
+top_height = 32.0
+left_width = 64.0
+metadata/_custom_type_script = "uid://bunenmw2vps5c"

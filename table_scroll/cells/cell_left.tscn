@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyeg8vhohc0co"]
+
+[ext_resource type="Script" uid="uid://cb14j3f2fwo4q" path="res://table_scroll/cells/cell_left.gd" id="1_7g6ay"]
+[ext_resource type="Resource" uid="uid://c7daomfa15v1r" path="res://table_scroll/res/table_size.tres" id="2_6jkgo"]
+
+[node name="CellLeft" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -16.5
+offset_right = 5.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_7g6ay")
+table_size = ExtResource("2_6jkgo")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+vertical_alignment = 1

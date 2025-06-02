@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://x23g7tv8wbhs"]
+
+[ext_resource type="Script" uid="uid://clq8dhi7uth6" path="res://table_scroll/table_scroll.gd" id="1_v7vpy"]
+[ext_resource type="Resource" uid="uid://c7daomfa15v1r" path="res://table_scroll/res/table_size.tres" id="2_23vyn"]
+[ext_resource type="PackedScene" uid="uid://do77oeactl8nf" path="res://table_scroll/cells/cell_top.tscn" id="3_bq0j6"]
+[ext_resource type="PackedScene" uid="uid://dyeg8vhohc0co" path="res://table_scroll/cells/cell_left.tscn" id="4_pof4p"]
+[ext_resource type="PackedScene" uid="uid://bktpg7yn7il22" path="res://table_scroll/cells/cell_grid.tscn" id="5_kq12n"]
+
+[node name="TableScroll" type="GridContainer"]
+custom_minimum_size = Vector2(300, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+script = ExtResource("1_v7vpy")
+table_size = ExtResource("2_23vyn")
+scene_cell_top = ExtResource("3_bq0j6")
+scene_cell_left = ExtResource("4_pof4p")
+scene_cell_grid = ExtResource("5_kq12n")
+
+[node name="TopLeft" type="Control" parent="."]
+layout_mode = 2
+
+[node name="ScrollTop" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="Top" type="HBoxContainer" parent="ScrollTop"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollLeft" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Left" type="VBoxContainer" parent="ScrollLeft"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollGrid" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="Grid" type="GridContainer" parent="ScrollGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

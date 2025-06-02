@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://do77oeactl8nf"]
+
+[ext_resource type="Script" uid="uid://cbrdb5yh80lud" path="res://table_scroll/cells/cell_top.gd" id="1_a2imr"]
+[ext_resource type="Resource" uid="uid://c7daomfa15v1r" path="res://table_scroll/res/table_size.tres" id="2_f7do5"]
+
+[node name="CellTop" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -16.5
+offset_right = 5.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_a2imr")
+table_size = ExtResource("2_f7do5")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
