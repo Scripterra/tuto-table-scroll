@@ -252,9 +252,9 @@ func _set_data(data: Array) -> void:
 
 ## 4. Next steps
 
-There are several possibilities to improve this table:
-- Create a custom resource to store the data.
-- Customize the theme to import the look.
-- Make the grid cells clickable to modify its content.
-- Change the `CellTop` to display the sum of each column.
+There are several ways to improve and extend this table:
+- Create a custom resource to store and manage the data.
+- Customize the theme to improve the visual appearance.
+- Make the grid cells clickable to allow content editing.
+- Change the `CellTop` to display the sum of each columns.
 - ...
