@@ -1,23 +1,22 @@
 [![Made with Godot v4.4](https://img.shields.io/badge/Made_with-Godot_v4.4-478CBF?style=flat&logo=godot%20engine&logoColor=white)](https://godotengine.org)
 
-- [A Scrolling Table](#a-scrolling-table)
-  - [1. Base structure of the widget](#1-base-structure-of-the-widget)
-  - [2. Synchronizing the views](#2-synchronizing-the-views)
-    - [2.1. Ensuring element sizes](#21-ensuring-element-sizes)
-      - [2.1.1. The cells](#211-the-cells)
-        - [2.1.1.1 Top cell](#2111-top-cell)
-        - [2.1.1.2 Left cell](#2112-left-cell)
-        - [2.1.1.3 Grid cell](#2113-grid-cell)
-      - [2.1.2. The Containers margin](#212-the-containers-margin)
-      - [2.1.3. Result](#213-result)
-    - [2.2. Syncronizing the scroll bars](#22-syncronizing-the-scroll-bars)
-  - [3. Set some data in the table from code](#3-set-some-data-in-the-table-from-code)
-
-
 # A Scrolling Table
 Tutorial to create a table where the headers (top and left) follow the main content (grid).
 
 <img alt="scroll-diagonal.gif" src="https://github.com/user-attachments/assets/f01c336e-4503-4a7c-a50d-86ada8ed6a27" width="480px"/>
+
+**Table of content:**
+- [1. Base structure of the widget](#1-base-structure-of-the-widget)
+- [2. Synchronizing the views](#2-synchronizing-the-views)
+  - [2.1. Ensuring element sizes](#21-ensuring-element-sizes)
+    - [2.1.1. The cells](#211-the-cells)
+      - [2.1.1.1 Top cell](#2111-top-cell)
+      - [2.1.1.2 Left cell](#2112-left-cell)
+      - [2.1.1.3 Grid cell](#2113-grid-cell)
+    - [2.1.2. The Containers margin](#212-the-containers-margin)
+    - [2.1.3. Result](#213-result)
+  - [2.2. Syncronizing the scroll bars](#22-syncronizing-the-scroll-bars)
+- [3. Set some data in the table from code](#3-set-some-data-in-the-table-from-code)
 
 ## 1. Base structure of the widget
 This widget is composed of 3 main elements (cf. image below):
