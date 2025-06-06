@@ -13,13 +13,17 @@ This widget is composed of 3 main elements (cf. image below):
 
 <img alt="scroll-table-base.png" src="https://github.com/user-attachments/assets/48ebc73f-b444-4367-86b9-a584d70a7fe9" width="480px"/>
 
-In Godot, we use a `GridContainer` to layout these elements. Therefore, we need a fourth element as the first child of the grid.
+In Godot, we use a `GridContainer` to layout these elements. Therefore, we need a fourth element as the first child of the grid (the top left square on the image above). This table is encapsulated in a `MarginContainer` and in a `PanelContainer` to make it look a bit better.
 
 `table_scroll.tscn`
 
-<img alt="table-scroll-tree.png" src="https://github.com/user-attachments/assets/42be222d-defe-4855-9c76-717cbd33540c"/>
+<img alt="table-scroll-tree.png" src="https://github.com/user-attachments/assets/8be1e7ed-c24c-47bb-bad6-c204450426d9" width="400px"/>
 
-**TODO:** Some parameters have to be set for the scrolling containers.
+In ordre to display the children of the `HeaderTop`, `HeaderLeft` and `Grid`, we have to configure the `ScrollContainers` to take as much place as possible.
+In the Editor, selecting a `ScrollContainer`, clicking on ![image](https://github.com/user-attachments/assets/a21d318b-095c-4c6a-a4d7-d0cd22f03912) "Sizing settings for a children of a Container node" and setting:
+- `ScrollTop` Horizontal alignment to `Fill` and `Expand`.
+- `ScrollLeft` Vertical alignment to `Fill` and `Expand`.
+- `ScrollGrid` both Horizontal and Vertical alignment to `Fill` and `Expand`.
 
 ## 2. Synchronizing the views
 To synchronize the views, we have to break it down into 2 behaviours:
