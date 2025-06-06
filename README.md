@@ -18,6 +18,11 @@ A tutorial to create a table where the headers (top and left) follow the main co
   - [2.2. Synchronizing the scroll bars](#22-synchronizing-the-scroll-bars)
 - [3. Set some data in the table from code](#3-set-some-data-in-the-table-from-code)
 
+
+**Prerequisites**
+For a better experience of this widget, it is prefered to enable `Input Device > Pointing > Emulate Touch From Mouse` in the Project Settings.
+
+
 ## 1. Base structure of the widget
 This widget is composed of 3 main elements (cf. image below):
 - The top header: a scrolling container with a horizontal container.
@@ -93,6 +98,8 @@ We'll create 3 different cells:
 Each cell is a `PanelContainer` with a `Label` inside.
 
 ![image](https://github.com/user-attachments/assets/986a0e1e-45e2-4f1a-b98a-ba0f922e33e2)
+
+**Warning!** The `PanelContainer` blocks the mouse input by default. We need to set the `Control > Mouse > Filter` to `Ignore`.
 
 The associated script takes as input the `TableSizes` `CustomResource` and the text to be displayed in the label.
 
@@ -193,7 +200,7 @@ func _on_scroll_grid_v_scrolling() -> void:
 
 ## 3. Set some data in the table from code
 
-For example, we want to display this data sheet:
+For example, we want to display this (very boring) data sheet:
 
 |        | Column 1 | Column 2 | Column 3 | Column 4 | Column 5 |
 |:-------|:--------:|:--------:|:--------:|:--------:|:--------:|
