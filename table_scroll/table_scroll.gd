@@ -1,5 +1,5 @@
 class_name TableScroll
-extends GridContainer
+extends PanelContainer
 
 
 @export var table_size: TableSize
@@ -67,7 +67,7 @@ func _set_data(data: Array) -> void:
 	for text in top.slice(1):
 		var cell = scene_cell_top.instantiate()
 		cell.text = text
-		%Top.add_child(cell)
+		%HeaderTop.add_child(cell)
 	
 	# Configure the grid and set each row
 	%Grid.columns = len(top) - 1
@@ -75,7 +75,7 @@ func _set_data(data: Array) -> void:
 		# Set the left header
 		var cell_left = scene_cell_left.instantiate()
 		cell_left.text = row[0]
-		%Left.add_child(cell_left)
+		%HeaderLeft.add_child(cell_left)
 		# Set the data in the grid
 		for value in row.slice(1):
 			var cell = scene_cell_grid.instantiate()

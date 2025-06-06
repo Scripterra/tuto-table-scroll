@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_xiuxd")
-grid_size = Vector2(64, 16)
+grid_size = Vector2(64, 28)
 top_height = 32.0
 left_width = 64.0
 metadata/_custom_type_script = "uid://bunenmw2vps5c"
