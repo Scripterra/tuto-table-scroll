@@ -1,7 +1,7 @@
 [![Made with Godot v4.4](https://img.shields.io/badge/Made_with-Godot_v4.4-478CBF?style=flat&logo=godot%20engine&logoColor=white)](https://godotengine.org)
 
 # A Scrolling Table
-Tutorial to create a table where the headers (top and left) follow the main content (grid).
+A tutorial to create a table where the headers (top and left) follow the main content (grid).
 
 <img alt="scroll-diagonal.gif" src="https://github.com/user-attachments/assets/f01c336e-4503-4a7c-a50d-86ada8ed6a27" width="480px"/>
 
@@ -15,7 +15,7 @@ Tutorial to create a table where the headers (top and left) follow the main cont
       - [2.1.1.3 Grid cell](#2113-grid-cell)
     - [2.1.2. The Containers margin](#212-the-containers-margin)
     - [2.1.3. Result](#213-result)
-  - [2.2. Syncronizing the scroll bars](#22-syncronizing-the-scroll-bars)
+  - [2.2. Synchronizing the scroll bars](#22-synchronizing-the-scroll-bars)
 - [3. Set some data in the table from code](#3-set-some-data-in-the-table-from-code)
 
 ## 1. Base structure of the widget
@@ -32,7 +32,7 @@ In Godot, we use a `GridContainer` to layout these elements. Therefore, we need 
 
 <img alt="table-scroll-tree.png" src="https://github.com/user-attachments/assets/8be1e7ed-c24c-47bb-bad6-c204450426d9" width="400px"/>
 
-In ordre to display the children of the `HeaderTop`, `HeaderLeft` and `Grid`, we have to configure the `ScrollContainers` to take as much place as possible.
+In order to display the children of the `HeaderTop`, `HeaderLeft` and `Grid`, we have to configure the `ScrollContainers` to take as much space as possible.
 In the Editor, selecting a `ScrollContainer`, clicking on ![image](https://github.com/user-attachments/assets/a21d318b-095c-4c6a-a4d7-d0cd22f03912) "Sizing settings for a children of a Container node" and setting:
 - `ScrollTop` Horizontal alignment to `Fill` and `Expand`.
 - `ScrollLeft` Vertical alignment to `Fill` and `Expand`.
@@ -57,7 +57,7 @@ We define a cell for each container that will contain its specific size and some
 
 <img alt="scroll-table-cell.png" src="https://github.com/user-attachments/assets/ec8ed886-d6fc-4e98-9ee1-4f12df5b6b5b" width="480px"/>
 
-We the use a `CustomResource` that will be given to each of the three cells as an `@export`.
+We use a `CustomResource` that will be given to each of the three cells as an `@export`.
 
 ```gdscript
 # table_sizes.gd
@@ -94,7 +94,7 @@ Each cell is a `PanelContainer` with a `Label` inside.
 
 ![image](https://github.com/user-attachments/assets/986a0e1e-45e2-4f1a-b98a-ba0f922e33e2)
 
-The script associated take in input the `TableSizes` `CustomResource` and the text to be displayed in the label.
+The associated script takes as input the `TableSizes` `CustomResource` and the text to be displayed in the label.
 
 ```gdscript
 # Common part for each cell_[...].gd
@@ -107,6 +107,7 @@ extends PanelContainer
 @export var text: String:
     set(value):
         text = value
+        # Ensures the Label node is fully ready before attempting to access it.
         if not is_node_ready():
             await ready
         %Label.text = value
@@ -131,8 +132,8 @@ func _ready() -> void:
 ##### 2.1.1.3 Grid cell
 ```gdscript
 func _ready() -> void:
-	custom_minimum_size.x = table_size.grid_size.x
-	custom_minimum_size.y = table_size.grid_size.y
+    custom_minimum_size.x = table_size.grid_size.x
+    custom_minimum_size.y = table_size.grid_size.y
 ```
 
 #### 2.1.2. The Containers margin
@@ -152,14 +153,14 @@ After adding some data in the table, we have this result:
 ![image](https://github.com/user-attachments/assets/74aa00cd-2106-4688-9efb-6cd36ee67966)
 
 
-### 2.2. Syncronizing the scroll bars
+### 2.2. Synchronizing the scroll bars
 Now, we have to link the different scroll bars of the scrolling containers.
 - Horizontal:
-  - If the top header scrolling container is scrolled horizontally, the grid scrolling container have to scroll horizontally.
-  - If the grid scrolling container is scrolled horizontally, the top header scrolling container have to scroll horizontally.
+  - If the top header scrolling container is scrolled horizontally, the grid scrolling container should scroll horizontally.
+  - If the grid scrolling container is scrolled horizontally, the top header scrolling container should scroll horizontally.
 - Vertical:
-  - If the left header scrolling container is scrolled vertically, the grid scrolling container have to scroll vertically.
-  - If the grid scrolling container is scrolled vertically, the left header scrolling container have to scroll vertically.
+  - If the left header scrolling container is scrolled vertically, the grid scrolling container should scroll vertically.
+  - If the grid scrolling container is scrolled vertically, the left header scrolling container should scroll vertically.
 
 In the editor, the script for the `table_scroll.tscn` is:
 ```gdscript
@@ -172,7 +173,6 @@ func _ready() -> void:
     %ScrollGrid.get_h_scroll_bar().scrolling.connect(_on_scroll_grid_h_scrolling)
     %ScrollGrid.get_v_scroll_bar().scrolling.connect(_on_scroll_grid_v_scrolling)
 
-#region Events scrollbar sync
 
 func _on_scroll_top_h_scrolling() -> void:
 	%ScrollGrid.scroll_horizontal = %ScrollTop.scroll_horizontal
@@ -188,9 +188,6 @@ func _on_scroll_grid_h_scrolling() -> void:
 
 func _on_scroll_grid_v_scrolling() -> void:
 	%ScrollLeft.scroll_vertical = %ScrollGrid.scroll_vertical
-
-#endregion
-
 ```
 
 
@@ -217,9 +214,9 @@ For example, we want to display this data sheet:
 | Row 15 | 0        | 0        | 0        | 0        | 0        |
 
 
-Let's create a function that take in input the data we want to display:
+Let's create a function that takes as input the data we want to display:
 - First, we remove children from the containers `HeaderTop`, `HeaderLeft` and `Grid`.
-- Then, we add a `CellTop` for each column from "Column 1".
+- Then, we add a `CellTop` for each column from "Column 1" in the header row.
 - Finally, for each row of the remaining array, we add the first element as a `CellLeft` and the others as `CellGrid`.
 
 ```gdscript
@@ -252,3 +249,12 @@ func _set_data(data: Array) -> void:
             cell.text = str(value)
             %Grid.add_child(cell)
 ```
+
+## 4. Next steps
+
+There are several possibilities to improve this table:
+- Create a custom resource to store the data.
+- Customize the theme to import the look.
+- Make the grid cells clickable to modify its content.
+- Change the `CellTop` to display the sum of each column.
+- ...
