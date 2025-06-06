@@ -1,9 +1,6 @@
 class_name TableScroll
 extends PanelContainer
 
-
-@export var table_size: TableSize
-
 @export_group("Scenes", "scene")
 @export var scene_cell_top: PackedScene
 @export var scene_cell_left: PackedScene
@@ -18,6 +15,10 @@ func _ready() -> void:
 	%ScrollGrid.get_v_scroll_bar().scrolling.connect(_on_scroll_grid_v_scrolling)
 	
 	# Fake some data
+	_set_data([
+		["", "Ok", "Cool"],
+		["nope", 1, 2]
+	])
 	_set_data([
 		["", "Column 1", "Column 2", "Column 3", "Column 4", "Column 5"],
 		["Row 1", 0, 0, 0, 0, 0],
@@ -62,13 +63,18 @@ func _on_scroll_grid_v_scrolling() -> void:
 
 ## Set the given data in the table.
 func _set_data(data: Array) -> void:
+	# Remove all children from the Containers
+	for child in %HeaderTop.get_children(): child.queue_free()
+	for child in %HeaderLeft.get_children(): child.queue_free()
+	for child in %Grid.get_children(): child.queue_free()
+
 	# Set the top header
 	var top: Array = data[0]
 	for text in top.slice(1):
 		var cell = scene_cell_top.instantiate()
 		cell.text = text
 		%HeaderTop.add_child(cell)
-	
+
 	# Configure the grid and set each row
 	%Grid.columns = len(top) - 1
 	for row in data.slice(1):
