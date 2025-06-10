@@ -3,7 +3,15 @@
 # Tutorial: A Scrolling Table
 A tutorial to create a table where the headers (top and left) follow the main content (grid).
 
+Minimalist example:
+
 <img alt="scroll-diagonal.gif" src="https://github.com/user-attachments/assets/f01c336e-4503-4a7c-a50d-86ada8ed6a27" width="480px"/>
+
+
+Running the project:
+
+https://github.com/user-attachments/assets/594c1a4d-8263-4b1d-9119-a89c68b68f5d
+
 
 **Table of content:**
 - [1. Base structure of the widget](#1-base-structure-of-the-widget)
