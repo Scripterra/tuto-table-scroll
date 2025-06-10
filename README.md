@@ -1,6 +1,6 @@
 [![Made with Godot v4.4](https://img.shields.io/badge/Made_with-Godot_v4.4-478CBF?style=flat&logo=godot%20engine&logoColor=white)](https://godotengine.org)
 
-# A Scrolling Table
+# Tutorial: A Scrolling Table
 A tutorial to create a table where the headers (top and left) follow the main content (grid).
 
 <img alt="scroll-diagonal.gif" src="https://github.com/user-attachments/assets/f01c336e-4503-4a7c-a50d-86ada8ed6a27" width="480px"/>
@@ -219,6 +219,7 @@ For example, we want to display this (very boring) data sheet:
 | Row 13 | 0        | 0        | 0        | 0        | 0        |
 | Row 14 | 0        | 0        | 0        | 0        | 0        |
 | Row 15 | 0        | 0        | 0        | 0        | 0        |
+| Row 16 | 0        | 0        | 0        | 0        | 0        |
 
 
 Let's create a function that takes as input the data we want to display:
